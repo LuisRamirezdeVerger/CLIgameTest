@@ -1,16 +1,17 @@
 const inquirer = require("inquirer");
-const { qstns } = require("./qstns");
+const { tutorial, prologe } = require("./qstns");
+const { Char } = require("./class");
 
-const game;
+let game;
 
 const init = () => {
-    inquirer
-    .prompt(qstns)
-    .then((answer) => {
-        game = new Game(
-            answer.tutorial
-        )
-    })
-}
+  inquirer.prompt(tutorial).then(() => tuto());
+};
 
+const tuto = () => {
+  inquirer.prompt(prologe).then((answers) => {
+    game = new Char(answers.charName);
+    console.log(`Alright, ${game.name}, I'm gonna get you out of there`);
+  });
+};
 init();
