@@ -33,12 +33,13 @@ const room00 = [
   },
 ];
 
+//CHECK HERE
 const room01 = [
   {
-    type: "text",
+    type: "input",
     name: "room01",
     message: "You are in a room full of pictures. What shall you do now? >>"
-      .purple,
+      .red,
   },
 ];
 
