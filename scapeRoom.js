@@ -2,7 +2,6 @@ const inquirer = require("inquirer");
 const colors = require("colors");
 const qstns = require("./qstns");
 const { Character } = require("./class");
-// const inventory = require("./inventory");
 
 let game;
 
@@ -14,10 +13,7 @@ const init = () => {
   // const style = "font-weight: bold";
   // console.log("Teeeeeest", style);
   // console.table(inventory);
-  // const r0 = inventory.push("key");
-  const r0 = inventory.tools.push("key");
 
-  console.log(r0);
   inquirer.prompt(qstns.tutorial).then(() => tuto());
 };
 
@@ -52,8 +48,15 @@ const room0 = () => {
           .red
       );
       entrance();
+    } else if (answer.room00 === "inventory") {
+      console.log(inventory);
+      room0();
     } else if (answer.room00 === "pickup") {
-      inventory.push("key");
+      const r0 = inventory.tools.push("key");
+      console.log("You picked up the key".red);
+      room0();
+    } else if (answer.room00 === "pickup1") {
+      const r0 = inventory.tools.push("key1");
       console.log("You picked up the key".red);
       room0();
     } else if (answer.room00 === "look around") {
@@ -70,8 +73,6 @@ const room0 = () => {
     }
   });
 
-  const room1 = () => {};
-  //CHECK HERE
   const entrance = () => {
     console.log("Looks like you're in the entrance".white.bold);
     // console.log(qstns.room01);
