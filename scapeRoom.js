@@ -5,9 +5,7 @@ const { Character } = require("./class");
 
 let game;
 
-const inventory = {
-  tools: [],
-};
+const inventory = [];
 
 const init = () => {
   // const style = "font-weight: bold";
@@ -42,21 +40,36 @@ const room0 = () => {
         "You need to scape, use actions (commands) that you think you could do in you were there"
       );
       room0();
+      // } //else if (
+      //   answer.room00 === "open door" &&
+      //   inventory[0] === false //inventory.map(["key"]) === false
+      // ) {
+      //   //if else here for opening the door
+
+      //   console.log("You may need a key to open that door");
+      //   room0();
+      // } else if (answer.room00 === "open door" && inventory[0] === true) {
+      //   console.log(
+      //     "While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
+      //       .red
+      //   );
+      //   entrance();
     } else if (answer.room00 === "open door") {
-      console.log(
-        "While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
-          .red
-      );
-      entrance();
+      if (inventory.includes("key") == true) {
+        console.log(
+          "While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
+            .red
+        );
+        room1();
+      } else {
+        console.log("You may need a key to open that door");
+        room0();
+      }
     } else if (answer.room00 === "inventory") {
       console.log(inventory);
       room0();
-    } else if (answer.room00 === "pickup") {
-      const r0 = inventory.tools.push("key");
-      console.log("You picked up the key".red);
-      room0();
-    } else if (answer.room00 === "pickup1") {
-      const r0 = inventory.tools.push("key1");
+    } else if (answer.room00 === "pickup key") {
+      inventory.push("key");
       console.log("You picked up the key".red);
       room0();
     } else if (answer.room00 === "look around") {
@@ -73,7 +86,7 @@ const room0 = () => {
     }
   });
 
-  const entrance = () => {
+  const room1 = () => {
     console.log("Looks like you're in the entrance".white.bold);
     // console.log(qstns.room01);
     inquirer.prompt(qstns.room01).then((answer) => {
@@ -81,10 +94,23 @@ const room0 = () => {
         console.log(
           "You need to scape, use actions (commands) that you think you could do if you were there"
         );
-        entrance();
+        room1();
+      } else if (answer.room01 === "look around") {
+        console.log(
+          "Everything is dusty... You can see an old rusty bed, a broken wood table and a new TV, that surprisely is working"
+        );
+        room1();
+      } else if (answer.room01 === "jump") {
+        console.log("You jumped! What's a game without jumping, right?");
+        room1();
+      } else if (answer.room01 === "watch tv") {
+        console.log(
+          "On TV you can see the news: - The whole planet is ruined!! 1001 aliens have arrived, they burnt 1001 lands to ashes, and they said they'll stay for 1001 years... PLEASE HELP!"
+        );
+        room1();
       } else {
         console.log("You can think better!");
-        entrance();
+        room1();
       }
     });
   };
