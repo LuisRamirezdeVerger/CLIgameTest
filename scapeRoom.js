@@ -40,20 +40,6 @@ const room0 = () => {
         "You need to scape, use actions (commands) that you think you could do in you were there"
       );
       room0();
-      // } //else if (
-      //   answer.room00 === "open door" &&
-      //   inventory[0] === false //inventory.map(["key"]) === false
-      // ) {
-      //   //if else here for opening the door
-
-      //   console.log("You may need a key to open that door");
-      //   room0();
-      // } else if (answer.room00 === "open door" && inventory[0] === true) {
-      //   console.log(
-      //     "While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
-      //       .red
-      //   );
-      //   entrance();
     } else if (answer.room00 === "open door") {
       if (inventory.includes("key") == true) {
         console.log(
@@ -73,6 +59,7 @@ const room0 = () => {
       console.log("You picked up the key".red);
       room0();
     } else if (answer.room00 === "look around") {
+      // ADD THE KEY!!
       console.log(
         "You look around and... well... There's not much to see, you're in a 2x2 room with 3 windows and a door"
       );
@@ -88,16 +75,26 @@ const room0 = () => {
 
   const room1 = () => {
     console.log("Looks like you're in the entrance".white.bold);
-    // console.log(qstns.room01);
     inquirer.prompt(qstns.room01).then((answer) => {
       if (answer.room01 === "help") {
         console.log(
           "You need to scape, use actions (commands) that you think you could do if you were there"
         );
         room1();
+        //BUGGED HERE!!
+      } else if (answer.room01 === "open door") {
+        console.log("Enter code: ");
+        inquirer.prompt();
+        if (answer.room01 === 1001) {
+          console.log("Access granted".red);
+          room1();
+        } else {
+          console.log("Error, try again");
+          room1();
+        }
       } else if (answer.room01 === "look around") {
         console.log(
-          "Everything is dusty... You can see an old rusty bed, a broken wood table and a new TV, that surprisely is working"
+          "Everything is dusty... You can see an old rusty bed, a broken wood table and a new TV that's surprisely working"
         );
         room1();
       } else if (answer.room01 === "jump") {
@@ -105,7 +102,7 @@ const room0 = () => {
         room1();
       } else if (answer.room01 === "watch tv") {
         console.log(
-          "On TV you can see the news: - The whole planet is ruined!! 1001 aliens have arrived, they burnt 1001 lands to ashes, and they said they'll stay for 1001 years... PLEASE HELP!"
+          "On TV you can see the news: - The whole planet is ruined!! 1001 demons have arrived, they burnt 1001 lands to ashes, and they said they'll stay for 1001 years... PLEASE HELP!"
         );
         room1();
       } else {
