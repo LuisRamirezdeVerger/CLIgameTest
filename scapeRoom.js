@@ -54,6 +54,9 @@ const room0 = () => {
     } else if (answer.room00 === "inventory") {
       console.log(inventory);
       room0();
+    } else if (answer.room00 === "look at the window") {
+      console.log("You can't see anything, they're tainted");
+      room0();
     } else if (answer.room00 === "pickup key") {
       inventory.push("key");
       console.log("You picked up the key".red);
@@ -61,7 +64,7 @@ const room0 = () => {
     } else if (answer.room00 === "look around") {
       // ADD THE KEY!!
       console.log(
-        "You look around and... well... There's not much to see, you're in a 2x2 room with 3 windows and a door"
+        "You look around and... well... There's not much to see, you're in a 2x2 room with 3 tinted windows, a key in the floor and a door"
       );
       room0();
     } else if (answer.room00 === "jump") {
