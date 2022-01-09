@@ -38,8 +38,8 @@ const room01 = [
   {
     type: "input",
     name: "room01",
-    message: "You are in a room full of pictures. What shall you do now? >>"
-      .red,
+    message: "What you wanna do now? >>".green,
+    code: 1001,
   },
 ];
 
