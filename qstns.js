@@ -21,7 +21,7 @@ const welcome = [
   {
     type: "text",
     name: "welcome",
-    message: `*knock* *knock* *knock*...`,
+    message: `*knock* *knock* *knock* You hear a knock from someone who seems to be outside`,
   },
 ];
 
@@ -33,13 +33,19 @@ const room00 = [
   },
 ];
 
-//CHECK HERE
 const room01 = [
   {
     type: "input",
     name: "room01",
     message: "What you wanna do now? >>".green,
-    code: 1001,
+  },
+];
+
+const room02 = [
+  {
+    type: "input",
+    name: "room02",
+    message: "What you wanna do now? >>".green,
   },
 ];
 
@@ -56,5 +62,6 @@ module.exports = {
   prologe,
   room00,
   room01,
+  room02,
   welcome,
 };

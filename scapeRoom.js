@@ -154,6 +154,17 @@ const room1 = () => {
   });
 };
 
-const room2 = () => {};
+const room2 = () => {
+  console.log("it'll be a room full of fire needing to stop it to be able to look around");
+  if (answer.room02 === "look around"){
+    if(inventory[1] == true){
+      console.log("Insert here ALL info")
+    } else {
+      console.log("The room is burning! You're not able to see anything")
+    }//inventory icegun true
+  }else if{
+
+  }
+};
 
 init();
