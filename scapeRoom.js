@@ -169,7 +169,7 @@ const room2 = () => {
         room2();
       } //inventory icegun true
     } else if (answer.room02 === "craft weapon") {
-      inventory.push(items.iceGun);
+      inventory.push(items.waterGun);
       console.log(inventory);
       console.log("Now you've got a gun!");
       room2();

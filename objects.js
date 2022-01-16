@@ -1,6 +1,6 @@
-let iceGun = {
+let waterGun = {
   power: 10,
   durability: 5,
 };
 
-module.exports = { iceGun };
+module.exports = { waterGun };
