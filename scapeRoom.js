@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const colors = require("colors");
 const qstns = require("./qstns");
 const { Character } = require("./class");
+const items = require("./objects");
 
 let game;
 
@@ -53,7 +54,7 @@ const room0 = () => {
         room0();
       }
     } else if (answer.room00 === "inventory") {
-      console.log(inventory);
+      console.table(inventory);
       room0();
     } else if (answer.room00 === "look at the window") {
       console.log("You can't see anything, they're tainted");
@@ -155,16 +156,28 @@ const room1 = () => {
 };
 
 const room2 = () => {
-  console.log("it'll be a room full of fire needing to stop it to be able to look around");
-  if (answer.room02 === "look around"){
-    if(inventory[1] == true){
-      console.log("Insert here ALL info")
-    } else {
-      console.log("The room is burning! You're not able to see anything")
-    }//inventory icegun true
-  }else if{
-
-  }
+  console.log(
+    "<<it'll be a room full of fire needing to stop it to be able to look around"
+  );
+  inquirer.prompt(qstns.room02).then((answer) => {
+    if (answer.room02 === "look around") {
+      if (inventory.includes(items.iceGun)) {
+        console.log("Insert here ALL info");
+        room2();
+      } else {
+        console.log("The room is burning! You're not able to see anything");
+        room2();
+      } //inventory icegun true
+    } else if (answer.room02 === "craft weapon") {
+      inventory.push(items.iceGun);
+      console.log(inventory);
+      console.log("Now you've got a gun!");
+      room2();
+    } else if (answer.room02 === "inventory") {
+      console.table(inventory);
+      room2();
+    }
+  });
 };
 
 init();
