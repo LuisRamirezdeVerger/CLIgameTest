@@ -9,11 +9,10 @@ let game;
 const inventory = [];
 
 const init = () => {
-  // const style = "font-weight: bold";
-  // console.log("Teeeeeest", style);
   // console.table(inventory);
 
-  inquirer.prompt(qstns.tutorial).then(() => tuto());
+  //change here to run game properly
+  inquirer.prompt(qstns.tutorial).then(() => room2());
 };
 
 const tuto = () => {
@@ -161,7 +160,8 @@ const room2 = () => {
   );
   inquirer.prompt(qstns.room02).then((answer) => {
     if (answer.room02 === "look around") {
-      if (inventory.includes(items.iceGun)) {
+      if (inventory.includes(items.waterGun)) {
+        // Poss err w/ inventory
         console.log("Insert here ALL info");
         room2();
       } else {
@@ -170,11 +170,15 @@ const room2 = () => {
       } //inventory icegun true
     } else if (answer.room02 === "craft weapon") {
       inventory.push(items.waterGun);
-      console.log(inventory);
+      // get the inventory!! \\
+      console.log(inventory.find(1));
       console.log("Now you've got a gun!");
       room2();
     } else if (answer.room02 === "inventory") {
       console.table(inventory);
+      room2();
+    } else {
+      console.log("You can think better! Check your spelling");
       room2();
     }
   });
