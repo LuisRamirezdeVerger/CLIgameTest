@@ -1,8 +1,13 @@
-let waterGun = {
+let filter = {
   id: 1,
-  name: "WaterGun",
-  power: 10,
-  durability: 5,
+  name: "Filter",
 };
 
-module.exports = { waterGun };
+// let waterGun = {
+//   id: 1,
+//   name: "WaterGun",
+//   power: 10,
+//   durability: 5,
+// };
+
+module.exports = { filter };
