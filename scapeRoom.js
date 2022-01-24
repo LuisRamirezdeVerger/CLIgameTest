@@ -9,6 +9,10 @@ let game;
 const inventory = [];
 
 const init = () => {
+  console.log(
+    "Welcome to 'AntiScape'! This game has no graphics, so I recommend to read everything carefully 'cause you'll probably get the key"
+      .red
+  );
   // console.table(inventory);
 
   //change here to run game properly
@@ -16,22 +20,23 @@ const init = () => {
 };
 
 const tuto = () => {
-  console.log(
-    "Welcome to 'AntiScape'! This game has no graphics, so I recommend to read everything carefully 'cause you'll problably get the key"
-  );
-  inquirer.prompt(qstns.welcome);
+  // inquirer.prompt(qstns.welcome);
   inquirer
     .prompt(qstns.prologe)
     .then((answers) => {
       game = new Character(answers.charName);
       console.log(
-        `Strange: -Alright ${game.name},
+        `-Strange: Alright ${game.name},
 I'm gonna get you out of there. For what I've hear, there's no living person who could scape, but I trust on you.
 just be carefull with your thoughts, there's something alive in there. Sometimes I'll be able to help you, follow my guidance!`
           .blue
       );
       console.log(
-        "-Lets start with basics. In order to scape, you'll need to think (type) your next movement. That's the 'easy' part, I've hear that you'll have sorts of trials on each room"
+        "Lets start with basics. In order to scape, you'll need to think (type) your next movement. That's the 'easy' part, I've hear that you'll have sorts of trials on each room"
+          .blue
+      );
+      console.log(
+        `If you are struggling to accomplish the room, ask for "help"!`.blue
       );
     })
     .then(() => room0());
@@ -44,7 +49,7 @@ const room0 = () => {
   inquirer.prompt(qstns.room00).then((answer) => {
     if (answer.room00 === "help") {
       console.log(
-        "You need to scape, use actions (commands) that you think you could do in you were there"
+        "You hear a voice in your head... -Strange: Hey! Can you hear me? I told you, I'll help you as much as I can! In order to scape from wherever you are, use actions (type'em) that you think you could do if you were there. Type like you were searching on Google (for example, if you want to open the door, the correct command will be <open door>. Try to <look around>!"
       );
       room0();
     } else if (answer.room00 === "open door") {
@@ -70,7 +75,7 @@ const room0 = () => {
       room0();
     } else if (answer.room00 === "look around") {
       console.log(
-        "You look around and... well... There's not much to see, you're in a 2x2 room with 3 tinted windows, a key in the floor and a closed door"
+        "You look around and... well... There's not much to see, you're in a small square room with 3 tinted windows, a key in the floor and a closed door"
       );
       room0();
     } else if (answer.room00 === "look window") {

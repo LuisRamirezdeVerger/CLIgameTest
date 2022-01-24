@@ -13,17 +13,17 @@ const prologe = [
   {
     type: "input",
     name: "charName",
-    message: "Hey dude, are you okay? What's your name? >>",
+    message: `You hear a knock from someone who seems to be outside  *knock* *knock* *knock* Hey dude, are you okay? What's your name? >>`,
   },
 ];
 
-const welcome = [
-  {
-    type: "text",
-    name: "welcome",
-    message: `*knock* *knock* *knock* You hear a knock from someone who seems to be outside`,
-  },
-];
+// const welcome = [
+//   {
+//     type: "text",
+//     name: "welcome",
+//     message: `You hear a knock from someone who seems to be outside  *knock* *knock* *knock* `,
+//   },
+// ];
 
 const room00 = [
   {
@@ -63,5 +63,5 @@ module.exports = {
   room00,
   room01,
   room02,
-  welcome,
+  // welcome,
 };
