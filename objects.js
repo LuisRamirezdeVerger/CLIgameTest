@@ -1,13 +1,24 @@
+// if (durability === 0) {
+//   inventory.slice(iceGun);
+// }
+
 let filter = {
   id: 1,
   name: "Filter",
 };
 
-// let waterGun = {
-//   id: 1,
-//   name: "WaterGun",
-//   power: 10,
-//   durability: 5,
-// };
+let fireGauntlet = {
+  id: 1,
+  name: "Fire Gaunlet",
+  power: 10,
+  durability: 1,
+};
 
-module.exports = { filter };
+let iceGun = {
+  id: 2,
+  name: "Ice Gun",
+  power: 10,
+  durability: 1,
+};
+
+module.exports = { filter, fireGauntlet, iceGun };

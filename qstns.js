@@ -17,14 +17,6 @@ const prologe = [
   },
 ];
 
-// const welcome = [
-//   {
-//     type: "text",
-//     name: "welcome",
-//     message: `You hear a knock from someone who seems to be outside  *knock* *knock* *knock* `,
-//   },
-// ];
-
 const room00 = [
   {
     type: "input",
@@ -49,19 +41,10 @@ const room02 = [
   },
 ];
 
-// const console = [
-//   {
-//     name:conSole
-//     message: `Alright ${game.name},
-//     // I'm gonna get you out of there`.blue,
-//   },
-// ];
-
 module.exports = {
   tutorial,
   prologe,
   room00,
   room01,
   room02,
-  // welcome,
 };

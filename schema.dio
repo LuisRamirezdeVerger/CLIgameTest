@@ -1,44 +1,59 @@
 <mxfile host="65bd71144e">
     <diagram id="q8X7UNndVoFQeACIbtA_" name="Page-1">
-        <mxGraphModel dx="1347" dy="2249" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1367" dy="1601" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-                    <mxGeometry y="200" width="820" height="820" as="geometry"/>
+                <mxCell id="2" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                    <mxGeometry y="190" width="820" height="820" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="" style="endArrow=none;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1">
+                <mxCell id="3" value="" style="endArrow=none;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="820" y="460" as="sourcePoint"/>
-                        <mxPoint y="460" as="targetPoint"/>
+                        <mxPoint x="795" y="690" as="sourcePoint"/>
+                        <mxPoint x="-25" y="690" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="4" value="" style="endArrow=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1">
+                <mxCell id="4" value="" style="endArrow=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="820" y="780" as="sourcePoint"/>
-                        <mxPoint y="780" as="targetPoint"/>
+                        <mxPoint x="820" y="928.33" as="sourcePoint"/>
+                        <mxPoint y="928.33" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="5" value="" style="endArrow=none;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
+                <mxCell id="5" value="" style="endArrow=none;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="242.99999999999977" y="1020" as="sourcePoint"/>
                         <mxPoint x="238" y="200" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="6" value="" style="endArrow=none;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
+                <mxCell id="6" value="" style="endArrow=none;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="574.9999999999998" y="1020" as="sourcePoint"/>
                         <mxPoint x="570" y="200" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="7" value="PICKUP KEY&lt;br&gt;OPEN DOOR" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="7" value="PICKUP KEY&lt;br&gt;OPEN DOOR" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="310" y="1019" width="150" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="-. HELP&amp;nbsp; &amp;nbsp; &amp;nbsp; --&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;-. LOOK AROUND&lt;br&gt;-. JUMP&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;--&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;br&gt;-. INVENTORY&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;--&amp;nbsp; &amp;nbsp; &amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="8" value="-. HELP&amp;nbsp; &amp;nbsp; &amp;nbsp; --&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;-. LOOK AROUND&lt;br&gt;-. JUMP&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;--&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;br&gt;-. INVENTORY&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;--&amp;nbsp; &amp;nbsp; &amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry y="-10" width="820" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="Door locked by a code&lt;br&gt;&lt;br&gt;code: 1001&lt;br&gt;-. WATCH TV (" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="260" y="800" width="300" height="190" as="geometry"/>
+                <mxCell id="9" value="Door locked by a code&lt;br&gt;&lt;br&gt;code: 1001&lt;br&gt;-. WATCH TV (" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="930" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="endArrow=none;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="820" y="820" as="sourcePoint"/>
+                        <mxPoint y="820" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="Door on fire - fireGaunlet&lt;br&gt;Huge ice block(iceGun)&lt;br&gt;big battery (for vents)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="830" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Door inside of a toxic chamber" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="710" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="dodge final boss hit&lt;br&gt;buddy is enemy" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="710" width="170" height="90" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
