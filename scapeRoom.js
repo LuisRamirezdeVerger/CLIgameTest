@@ -15,7 +15,7 @@ const init = () => {
   );
 
   //change after "=>" to run game properly
-  inquirer.prompt(qstns.tutorial).then(() => room2());
+  inquirer.prompt(qstns.tutorial).then(() => tuto());
 };
 
 const tuto = () => {
@@ -46,7 +46,7 @@ const room0 = () => {
   inquirer.prompt(qstns.room00).then((answer) => {
     if (answer.room00 === "help") {
       console.log(
-        "You hear a voice in your head... -Strange: Hey! Can you hear me? I told you, I'll help you as much as I can! In order to scape from wherever you are, use actions (type'em) that you think you could do if you were there. Type like you were searching on Google (for example, if you want to open the door, the correct command will be <open door>. Try to <look around>!"
+        "You hear a voice in your head... -Strange: Hey! Can you hear me? I told you, I'll help you as much as I can! In order to escape from wherever you are, use actions (type'em) that you think you could do if you were there. Type like you were searching on Google (for example, if you want to open the door, the correct command will be <open door>. Try to <look around>!"
       );
       room0();
     } else if (answer.room00 === "open door") {
@@ -55,6 +55,7 @@ const room0 = () => {
           "While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
             .red
         );
+        inventory.splice("key");
         room1();
       } else {
         console.log("You may need a key to open that door");
@@ -63,7 +64,7 @@ const room0 = () => {
     } else if (answer.room00 === "inventory") {
       console.table(inventory);
       room0();
-    } else if (answer.room00 === "look at the window") {
+    } else if (answer.room00 === "look window") {
       console.log("You can't see anything, they're tainted");
       room0();
     } else if (answer.room00 === "pickup key") {
@@ -98,6 +99,9 @@ const room1 = () => {
       console.log(
         "-Strange: Arghhh! It's been a lot since I don't help somebody, can't remember the code, but I remember it had 4 digits, look around! You may be "
       );
+      room1();
+    } else if (answer.room01 === "inventory") {
+      console.table(inventory);
       room1();
     } else if (answer.room01 === "open door") {
       inquirer
