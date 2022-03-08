@@ -1,3 +1,9 @@
+const inquirer = require("inquirer");
+const colors = require("colors");
+const qstns = require("../qstns");
+const { Character } = require("../class");
+const room0 = require("./rooms/room00");
+
 const tutorial = () => {
   inquirer
     .prompt(qstns.prologe)
@@ -19,5 +25,4 @@ const tutorial = () => {
     })
     .then(() => room0());
 };
-
-module.exports = { tutorial };
+module.exports = tutorial;
