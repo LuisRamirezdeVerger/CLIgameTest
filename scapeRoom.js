@@ -1,9 +1,9 @@
 const inquirer = require("inquirer");
 const colors = require("colors");
 const qstns = require("./qstns");
-const { Character } = require("../class");
+const { Character } = require("./class");
 const items = require("./objects");
-const tutorial = require("./rooms/tutorial");
+// const tutorial = require("./rooms/tutorial");
 
 let game;
 
@@ -16,81 +16,81 @@ const init = () => {
   );
 
   //change after "=>" to run game properly
-  inquirer.prompt(qstns.tutorial).then(() => tutorial());
+  inquirer.prompt(qstns.tutorial).then(() => tuto());
 };
 
-// const tutorial = () => {
-//   inquirer
-//     .prompt(qstns.prologe)
-//     .then((answers) => {
-//       game = new Character(answers.charName);
-//       console.log(
-//         `- Strange: Alright ${game.name},
-// I'm gonna get you out of there. For what I've hear, there's no living person who could scape, but I trust on you.
-// just be carefull with your thoughts, there's something alive in there. Sometimes I'll be able to help you, follow my guidance!`
-//           .blue
-//       );
-//       console.log(
-//         "Lets start with basics. In order to scape, you'll need to think (type) your next movement. That's the 'easy' part, I've hear that you'll have sorts of trials on each room"
-//           .blue
-//       );
-//       console.log(
-//         `If you are struggling to accomplish the room, ask for "help"!`.blue
-//       );
-//     })
-//     .then(() => room0());
-// };
+const tuto = () => {
+  inquirer
+    .prompt(qstns.prologe)
+    .then((answers) => {
+      game = new Character(answers.charName);
+      console.log(
+        `- Strange: Alright ${game.name},
+I'm gonna get you out of there. For what I've hear, there's no living person who could scape, but I trust on you.
+just be carefull with your thoughts, there's something alive in there. Sometimes I'll be able to help you, follow my guidance!`
+          .blue
+      );
+      console.log(
+        "Lets start with basics. In order to scape, you'll need to think (type) your next movement. That's the 'easy' part, I've hear that you'll have sorts of trials on each room"
+          .blue
+      );
+      console.log(
+        `If you are struggling to accomplish the room, ask for "help"!`.blue
+      );
+    })
+    .then(() => room0());
+};
 
-// const room0 = () => {
-//   console.log("Looks like you're in the main door".white.bold);
+const room0 = () => {
+  console.log("Looks like you're in the main door".white.bold);
 
-//   inquirer.prompt(qstns.room00).then((answer) => {
-//     if (answer.room00 === "help") {
-//       console.log(
-//         "You hear a voice in your head... -Strange: Hey! Can you hear me? I told you, I'll help you as much as I can! In order to escape from wherever you are, use actions (type'em) that you think you could do if you were there. Type like you were searching on Google (for example, if you want to open the door, the correct command will be <open door>. Try to <look around>!"
-//       );
-//       room0();
-//     } else if (answer.room00 === "open door") {
-//       if (inventory.includes("key") == true) {
-//         console.log(
-//           "While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
-//             .red
-//         );
-//         inventory.splice("key");
-//         room1();
-//       } else {
-//         console.log("You may need a key to open that door");
-//         room0();
-//       }
-//     } else if (answer.room00 === "inventory") {
-//       console.table(inventory);
-//       room0();
-//     } else if (answer.room00 === "look window") {
-//       console.log("You can't see anything, they're tainted");
-//       room0();
-//     } else if (answer.room00 === "pickup key") {
-//       inventory.push("key");
-//       console.log("You picked up the key".red);
-//       room0();
-//     } else if (answer.room00 === "look around") {
-//       console.log(
-//         "You look around and... well... There's not much to see, you're in a small square room with 3 tinted windows, a key in the floor and a closed door"
-//       );
-//       room0();
-//     } else if (answer.room00 === "look window") {
-//       console.log(
-//         "You can't see sh*t! You barely visualize the shadow of your bud through it"
-//       );
-//       room0();
-//     } else if (answer.room00 === "jump") {
-//       console.log("You jumped! What's a game without jumping, right?");
-//       room0();
-//     } else {
-//       console.log("Command invalid, think a bit harder!");
-//       room0();
-//     }
-//   });
-// };
+  inquirer.prompt(qstns.room00).then((answer) => {
+    if (answer.room00 === "help") {
+      console.log(
+        "You hear a voice in your head... -Strange: Hey! Can you hear me? I told you, I'll help you as much as I can! In order to escape from wherever you are, use actions (type'em) that you think you could do if you were there. Type like you were searching on Google (for example, if you want to open the door, the correct command will be <open door>. Try to <look around>!"
+      );
+      room0();
+    } else if (answer.room00 === "open door") {
+      if (inventory.includes("key") == true) {
+        console.log(
+          "While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
+            .red
+        );
+        inventory.splice("key");
+        room1();
+      } else {
+        console.log("You may need a key to open that door");
+        room0();
+      }
+    } else if (answer.room00 === "inventory") {
+      console.table(inventory);
+      room0();
+    } else if (answer.room00 === "look window") {
+      console.log("You can't see anything, they're tainted");
+      room0();
+    } else if (answer.room00 === "pickup key") {
+      inventory.push("key");
+      console.log("You picked up the key".red);
+      room0();
+    } else if (answer.room00 === "look around") {
+      console.log(
+        "You look around and... well... There's not much to see, you're in a small square room with 3 tinted windows, a key in the floor and a closed door"
+      );
+      room0();
+    } else if (answer.room00 === "look window") {
+      console.log(
+        "You can't see sh*t! You barely visualize the shadow of your bud through it"
+      );
+      room0();
+    } else if (answer.room00 === "jump") {
+      console.log("You jumped! What's a game without jumping, right?");
+      room0();
+    } else {
+      console.log("Command invalid, think a bit harder!");
+      room0();
+    }
+  });
+};
 
 const room1 = () => {
   //console.log("You are in a room full of pictures.".white.bold);
@@ -183,13 +183,7 @@ const room2 = () => {
           "The door is in fire! You'll burn yourself if you try to open that door"
         );
         room2();
-      } //inventory icegun true
-    } else if (answer.room02 === "craft weapon") {
-      // inventory.push(items.waterGun);
-      // get the inventory!! \\
-      // console.log(inventory.includes(1));
-      // console.log("Now you've got a gun!");
-      if (inventory.includes(items.filter)) room2();
+      } 
     } else if (answer.room02 === "inventory") {
       console.table(inventory);
       room2();
@@ -228,7 +222,7 @@ const room2 = () => {
         "-Strange: Woah! You... You made it! How's is this POSSIBLE?!?! *ehem...* Well doneee! I knew you were able to do it!"
       );
       room3();
-    } else if (answer.room02 === "melt ice cub") {
+    } else if (answer.room02 === "melt ice cube") {
       if (inventory.includes(items.fireGauntlet)) {
         console.log(
           "When you get the hand close enough to start melting the ice, the flames embrace the ice by themselves and melt it in 9 seconds.  "
@@ -246,6 +240,84 @@ const room2 = () => {
     } else {
       console.log("You can think better! Check your spelling");
       room2();
+    }
+  });
+};
+
+const room3 = () => {
+  // console.log(
+  //   "START HERE! Check 'schema.dio'"
+  // );
+  inquirer.prompt(qstns.room02).then((answer) => {
+    if (answer.room02 === "open door") {
+      if (inventory.includes(items.toxicMask)) {
+        // Create it!
+        console.log("Insert here ALL info");
+        console.log(items.iceGun);
+        room4();
+      } else {
+        console.log(
+          "The door is in fire! You'll burn yourself if you try to open that door"
+        );
+        room3();
+      } 
+    } else if (answer.room02 === "inventory") {
+      console.table(inventory);
+      room3();
+    } else if (answer.room02 === "help") {
+      console.log(
+        "-Strange: The door is on fire! Think how you could stop a fire from an old tek lab, you may be able to take few stuff, but don't say a word!"
+      );
+      room3();
+    } else if (answer.room02 === "look around") {
+      //way to light up the energy
+      console.log(
+        "You are inside of an old lab, everything is clean and white, there's a shelf, a huge ice cub and the door on fire"
+      );
+      room3();
+    } else if (answer.room02 === "look shelf") {
+      console.log(
+        "In the shelf you see a lot of broken glasses and a gau... Wait, what? *cof* You see a gauntlet imbueded on flames"
+      );
+      room3();
+    } else if (answer.room02 === "take gauntlet") {
+      inventory.push(items.fireGauntlet);
+      console.log(
+        "Carefull, is hot, well... is not! You take the gauntlet with no harm"
+      );
+      room3();
+    } else if (answer.room02 === "look ice cub") {
+      console.log(
+        "Yup, that's a huge ice cube. Looks like there's something inside..."
+      );
+      room3();
+    } else if (answer.room02 === "shoot ice gun") {
+      console.log(
+        "When you pull the trigger of you little friend, you start hearing a magic loading sound coming from the gun, after 3 seconds, the gun blast completely the door with ice"
+      );
+      inventory.slice(items.iceGun);
+      console.log(
+        "-Strange: Woah! You... You made it! How's is this POSSIBLE?!?! *ehem...* Well doneee! I knew you were able to do it!"
+      );
+      room4();
+    } else if (answer.room02 === "melt ice cube") {
+      if (inventory.includes(items.fireGauntlet)) {
+        console.log(
+          "When you get the hand close enough to start melting the ice, the flames embrace the ice by themselves and melt it in 9 seconds.  "
+        );
+        console.log(
+          "Now you have the a gun! But it doesn't look like an ordinary gun, is a gun made by ice, frozen enough to hold the fire from the gauntlet"
+        );
+        inventory.push(items.iceGun);
+      } else {
+        console.log(
+          "You'll need a big fire to melt that before you die by hunger..."
+        );
+      }
+      room3();
+    } else {
+      console.log("You can think better! Check your spelling");
+      room3();
     }
   });
 };
