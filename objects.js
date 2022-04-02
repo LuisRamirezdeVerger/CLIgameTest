@@ -10,15 +10,19 @@ let filter = {
 let fireGauntlet = {
   id: 1,
   name: "Fire Gaunlet",
-  power: 10,
-  durability: 1,
+  // power: 10,
+  // durability: 1,
 };
 
 let iceGun = {
   id: 2,
   name: "Ice Gun",
-  power: 10,
-  durability: 1,
+  // power: 10,
+  // durability: 1,
 };
 
-module.exports = { filter, fireGauntlet, iceGun };
+let toxicMask = {
+  id: 3,
+  name: "AntiToxic Mask"
+}
+module.exports = { filter, fireGauntlet, iceGun, toxicMask };

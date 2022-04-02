@@ -41,10 +41,19 @@ const room02 = [
   },
 ];
 
+const room03 = [
+    {
+      type: "input",
+      name: "room03",
+      message: "What you wanna do now? >>".green,
+    },
+];
+
 module.exports = {
   tutorial,
   prologe,
   room00,
   room01,
   room02,
+  room03,
 };
