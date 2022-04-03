@@ -18,10 +18,10 @@ const init = () => {
   // Type here all the colors info!!
 
   //change after "=>" to run game properly
-  inquirer.prompt(qstns.tutorial).then(() => room3());
+  inquirer.prompt(qstns.tutorial).then(() => intro());
 };
 
-const tuto = () => {
+const intro = () => {
   inquirer
     .prompt(qstns.prologe)
     .then((answers) => {
@@ -44,7 +44,7 @@ just be carefull with your thoughts, there's something alive in there. Sometimes
 };
 
 const room0 = () => {
-  console.log("Looks like you're in the main door".white.bold);
+  console.log("Looks like you're in the main hall".white.bold);
 
   inquirer.prompt(qstns.room00).then((answer) => {
     if (answer.room00 === "help") {
@@ -61,7 +61,7 @@ const room0 = () => {
         inventory.splice("key");
         room1();
       } else {
-        console.log("You may need a key to open that door");
+        console.log("The door is locked, you may need a key to open that door");
         room0();
       }
     } else if (answer.room00 === "inventory") {
@@ -304,7 +304,7 @@ const room3 = () => {
         "In the closet there are a lab coat with a pocket and a mask"
       );
       room3();
-    } else if (answer.room03 === "look pocket") {
+    } else if (answer.room03 === "inspect pocket") {
       console.log(
         "When you introduce your hand in the pocket, feels empty, but when you look at your hand, you realize that you're holding the softest piece of cotton you ever touch"
       );
@@ -319,7 +319,7 @@ const room3 = () => {
       room3();
     } else if (answer.room03 === "look chamber") {
       console.log(
-        "-Strange: That chamber is full of a green air, not suspicious at all, problably nothing bad *gulp*"
+        "-Strange: That chamber is full of a green air, not suspicious at all, problably... Nothing bad... *gulp*"
       );
       room3();
     } else if (answer.room03 === "look library") {
@@ -347,9 +347,9 @@ const room3 = () => {
           "Thanks to your knowledge, you are able to craft an... AntiToxic Mask!"
         );
         console.log(
-          "Now you have the a gun! But it doesn't look like an ordinary gun, is a gun made by ice, frozen enough to hold the fire from the gauntlet"
+          "-Strange: That was... Unexpected... Go.. Good J.. Job... I guess..."
         );
-        inventory.push(items.iceGun);
+
       } else {
         console.log(
           "Have you got all the items in your inventory?"
@@ -358,16 +358,56 @@ const room3 = () => {
       room3();
     } else if (answer.room03 === "look desk") {
       console.log(
-        "[...] After 27 tests, it's well known how cotton clean the toxicity of the green air thanks to [...] "
+        "The desk is pretty dirty and rusty, the computer seems to work, and the potion is inside of a cilindric phial, shinning with the best green you could imagine."
       );
       console.log("-Strange: When did that book arrive there? It wasn't the last time I checked it...");
       room3();
+    } else if (answer.room03 === "drink potion") {
+      console.log(
+        "-Strange: Hahaha... Haha... HAHAHAHAHA!!"
+      );
+      console.log("You foot start to weight way to much, you can't move at all... Every milisecond you feel how your blood start to get thicker, after 1.8 seconds, you became a statue...");
+      console.log("You may need some knowledge for the next time...");
+    } else if (answer.room03 === "look computer") {
+      inquirer
+        .prompt([
+          {
+            name: "advice",
+            message:
+              "The computer is working perfectly, you'll need the password"
+                .green,
+          },
+          {
+            type: "input",
+            name: "code1",
+            message: `Welcome ${game.name}, Enter password: .... REMINDER: "In letters, hexadecimal or multiple of the numbers encountered, `,
+          },
+        ])
+        .then((respuesta) => {
+          if (respuesta.code1 == "nine") {
+            console.log("Password correct!".red);
+            easterEgg();
+          } else {
+            console.log("Error, try again".white.bgWhite);
+            room3();
+            //We can kill here as well
+          }
+        });
     } else {
       console.log("You can think better! Check your spelling");
       room3();
     }
   });
 };
+
+const easterEgg = () => {
+  console.log("WTF are you doing?? Well played! Hope it was a bit challenging, just a bit! In here you'll get nothing to finish this room, but you did it! You found the easterEgg hided in this game.");
+  console.log("If you're curious about why the number 9, it's 'cause the coder encounter this number way many times in his childhood, thinking that the number was following him while it was (unconsciously)all the opposite(lmao).");
+  console.log("And now that you're here, all I've to say is THANKS! Thanks for playing this far, as a creator, all I want is you to finish and enjoy the game ^^");
+  console.log("Okay, okay, okay, I'm feeling softhearted. The key to finish this room is in");
+  console.log("FATAL ERROR: 404 NOT FOUND. Powering off...".blue);
+  room3();
+}
 
 const gameOver = () => {
   console.log("This is the end, if you're reading this, my apologies, this still in beta, next time you'll have a proper ending. Big Love from Spain: Antiheroe")
