@@ -8,6 +8,7 @@ const items = require("./objects");
 let game;
 
 const inventory = [];
+let lights = false;
 
 const init = () => {
   console.log(
@@ -250,13 +251,13 @@ const room2 = () => {
 
 const room3 = () => {
 
-  let lights = false;
+  
   console.log(
     "And now you can... Well, you're doing great, so there's no need to help you anymore... Don't worry, I'll repeat this any time you fail. Good luck :)"
   );
   inquirer.prompt(qstns.room03).then((answer) => {
     if (answer.room03 === "open door") {
-      if (inventory.includes(items.toxicMask)) {
+      if (inventory.includes(items.antiToxicMask)) {
         console.log("-Strange: WHAAAAAT? NOOOOOOOOOOOO! You were not suposed to pass!! I brainwashed you when you died for the same reason! Why would you think you're not able to remember anything?! This is not over yet (name), IS NOT OVEEEEEER!");
         console.log("While your fake friend was yelling at you because of his failure, you started to feel better than never in your life... Or death?")
         gameOver();
@@ -267,7 +268,8 @@ const room3 = () => {
         console.log("After inhaling the toxic air, you faint...")
       } 
     } else if (answer.room03 === "jump") {
-      this.lights = true; // HERE WE NEED TO CHANGE IT!!
+      lights = true;
+      // Think on moving the whole room to another file just to have everything tidy...
       console.log("You jumped! What's a game without jumping, right?");
       console.log("After you jumped, the pressure plate was activated, and slowly, all lights started to switch on");
       room3();
@@ -297,35 +299,52 @@ const room3 = () => {
      
       room3();
       //edit here!
-    } else if (answer.room03 === "look shelf") {
+    } else if (answer.room03 === "look closet") {
       console.log(
-        "In the shelf you see a lot of broken glasses and a gau... Wait, what? *cof* You see a  gauntlet imbueded on flames"
+        "In the closet there are a lab coat with a pocket and a mask"
       );
       room3();
-    } else if (answer.room03 === "take gauntlet") {
-      inventory.push(items.fireGauntlet);
+    } else if (answer.room03 === "look pocket") {
       console.log(
-        "Carefull, is hot, well... is not! You take the gauntlet with no harm"
+        "When you introduce your hand in the pocket, feels empty, but when you look at your hand, you realize that you're holding the softest piece of cotton you ever touch"
+      );
+      console.log("-Strange: Ohh! I missed that feeling, the best Antitoxic cotton with a touch of heaven...");
+      inventory.push(items.cotton);
+      room3();
+    } else if (answer.room03 === "take mask") {
+      inventory.push(items.toxicMask);
+      console.log(
+        `Oh yeah, that was a "high quality" mask, looks like is missing a piece... I guess you can not use it yet...`
       );
       room3();
-    } else if (answer.room03 === "look ice cub") {
+    } else if (answer.room03 === "look chamber") {
       console.log(
-        "Yup, that's a huge ice cube. Looks like there's something inside..."
+        "-Strange: That chamber is full of a green air, not suspicious at all, problably nothing bad *gulp*"
       );
       room3();
-    } else if (answer.room03 === "shoot ice gun") {
+    } else if (answer.room03 === "look library") {
       console.log(
-        "When you pull the trigger of you little friend, you start hearing a magic loading sound coming from the gun, after 3 seconds, the gun blast completely the door with ice"
+        "You can see a few books about poisoning and toxicity"
       );
-      inventory.slice(items.iceGun);
+      room3();
+    } else if (answer.room03 === "read poisoning book") {
       console.log(
-        "-Strange: Woah! You... You made it! How's is this POSSIBLE?!?! *ehem...* Well doneee! I knew you were able to do it!"
+        "[...] Whatever you do, NEVER trust on green, there are many reason, for example, [...] "
       );
-      room4();
-    } else if (answer.room02 === "melt ice cube") {
-      if (inventory.includes(items.fireGauntlet)) {
+      console.log("-Strange: Ahh... Such a good memories reading that book... All you need is GREEN! Right?");
+      room3();
+    } else if (answer.room03 === "read toxicity book") {
+      console.log(
+        "[...] After 27 tests, it's well known how cotton clean the toxicity of the green air thanks to [...] "
+      );
+      console.log("-Strange: When did that book arrive there? It wasn't the last time I checked it...");
+      room3();
+    } else if (answer.room03 === "craft antitoxic mask") {
+      if (inventory.includes(items.cotton) && inventory.includes(items.toxicMask)) {
+        inventory.splice(items.cotton && items.toxicMask);
+        inventory.push(items.antiToxicMask);
         console.log(
-          "When you get the hand close enough to start melting the ice, the flames embrace the ice by themselves and melt it in 9 seconds.  "
+          "Thanks to your knowledge, you are able to craft an... AntiToxic Mask!"
         );
         console.log(
           "Now you have the a gun! But it doesn't look like an ordinary gun, is a gun made by ice, frozen enough to hold the fire from the gauntlet"
@@ -333,9 +352,15 @@ const room3 = () => {
         inventory.push(items.iceGun);
       } else {
         console.log(
-          "You'll need a big fire to melt that before you die by hunger..."
+          "Have you got all the items in your inventory?"
         );
       }
+      room3();
+    } else if (answer.room03 === "look desk") {
+      console.log(
+        "[...] After 27 tests, it's well known how cotton clean the toxicity of the green air thanks to [...] "
+      );
+      console.log("-Strange: When did that book arrive there? It wasn't the last time I checked it...");
       room3();
     } else {
       console.log("You can think better! Check your spelling");
@@ -345,6 +370,6 @@ const room3 = () => {
 };
 
 const gameOver = () => {
-  console.log("This is the end, if you're reading this, apologize, this still in beta, next time you'll have a proper ending. Big Love from Spain: Antiheroe")
+  console.log("This is the end, if you're reading this, my apologies, this still in beta, next time you'll have a proper ending. Big Love from Spain: Antiheroe")
 }
 init();

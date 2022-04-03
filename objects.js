@@ -23,6 +23,16 @@ let iceGun = {
 
 let toxicMask = {
   id: 3,
-  name: "AntiToxic Mask"
-}
-module.exports = { filter, fireGauntlet, iceGun, toxicMask };
+  name: "Toxic Mask"
+};
+
+let cotton = {
+  id: 4,
+  name: "AntiToxicCotton"
+};
+
+let antiToxicMask = {
+  id: 5,
+  name: "AntiToxicMask"
+};
+module.exports = { filter, fireGauntlet, iceGun, toxicMask, cotton, antiToxicMask };
