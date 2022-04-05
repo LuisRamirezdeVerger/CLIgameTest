@@ -12,9 +12,14 @@ let lights = false;
 
 const init = () => {
   console.log(
-    "Welcome to 'AntiScape'! This game has no graphics, so I recommend to read everything carefully 'cause you'll probably get the key"
-      .red
+`Welcome to "AntiScape"! A Text adventure game, for a better experience, I strongly recommend to read everything carefully, you'll have the solution in the text, the challenge
+ here will be to match the commands for the ones that are programmed, if you feel stuck, check your spelling, read the text again or find a synonym!`.red
   );
+  console.log(`In the game you'll see text in different colors, every color has a purpose, here you have all of them: `);
+  console.log(`Red is for`.red);
+  console.log(`Blue is for`.blue);
+  console.log(`Green is for`.green);
+  console.log(`White is for`.white);
   // Type here all the colors info!!
 
   //change after "=>" to run game properly
