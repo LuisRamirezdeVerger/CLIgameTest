@@ -12,15 +12,18 @@ let lights = false;
 
 const init = () => {
   console.log(
-`Welcome to "AntiScape"! A Text adventure game, for a better experience, I strongly recommend to read everything carefully, you'll have the solution in the text, the challenge
+`Welcome to "AntiScape"! This is a Text adventure game, for a better experience, I strongly recommend to read everything carefully, you'll have the solution in the text, the challenge
  here will be to match the commands for the ones that are programmed, if you feel stuck, check your spelling, read the text again or find a synonym!`.red
   );
   console.log(`In the game you'll see text in different text colors, every color has a meaning, here you have all of them: `);
-  console.log(`Red is for`.red);
-  console.log(`Blue is for`.blue);
-  console.log(`Green is for`.green);
-  console.log(`White is for`.white);
-  // Type here all the colors info!!
+  console.log(`When you're moving forward`.red);
+  console.log(`When your friend talk to you(You'll understand soon)`.blue);
+  console.log(`If you need to do an action`.green);
+  console.log(`General text`.white.bold);
+  console.log(`This is for... Well, you'll see, if you know everything, you won't enjoy!! :P`.magenta);
+  console.log(`This game doesn't have a "checkpoint", so, if you can't make it at once, you'll need to start over again!
+  Now you know everything you need, please, enjoy!!`.black.bgWhite);
+  console.log("");
 
   //change after "=>" to run game properly
   inquirer.prompt(qstns.tutorial).then(() => intro());
@@ -55,7 +58,7 @@ const room0 = () => {
     if (answer.room00 === "help") {
       console.log(
         "You hear a voice in your head... -Strange: Hey! Can you hear me? I told you, I'll help you as much as I can! In order to escape from wherever you are, use actions (type'em) that you think you could do if you were there. Type like you were searching on Google (for example, if you want to open the door, the correct command will be <open door>. Try to <look around>!"
-      );
+      .blue);
       room0();
     } else if (answer.room00 === "unlock door") {
       if (inventory.includes("key") == true) {
@@ -72,12 +75,12 @@ const room0 = () => {
       }else if (answer.room00 === "open door") {
         if (inventory.includes("key") == true) {
           console.log(
-            "You've got a key, use it!"
+            "-Strange: You've got a key, use it!"
               .red
           );
           room0();
         } else {
-        console.log("While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
+        console.log("While you open the door, the whole building start to shake and everything went dark, when you start to see something..."
         .red
         );
         room1();
@@ -99,7 +102,7 @@ const room0 = () => {
       room0();
     } else if (answer.room00 === "look window") {
       console.log(
-        "You can't see sh*t! You barely visualize the shadow of your bud through it"
+        "You can't see sh*t! You barely visualize the shape of your friend through it"
       );
       room0();
     } else if (answer.room00 === "jump") {
@@ -158,7 +161,7 @@ const room1 = () => {
       room1();
     } else if (answer.room01 === "eat food") {
       console.log(
-        "HOW YOU DARE TO TAKE MYYYYYY FOOD? I KNEW YOU WERE NOT WORTH IT!".red
+        "HOW YOU DARE TO TAKE MYYYYYY FOOD? I KNEW YOU WERE NOT WORTH IT!".magenta
           .bold
       );
       console.log(
