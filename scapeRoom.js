@@ -15,7 +15,7 @@ const init = () => {
 `Welcome to "AntiScape"! A Text adventure game, for a better experience, I strongly recommend to read everything carefully, you'll have the solution in the text, the challenge
  here will be to match the commands for the ones that are programmed, if you feel stuck, check your spelling, read the text again or find a synonym!`.red
   );
-  console.log(`In the game you'll see text in different colors, every color has a purpose, here you have all of them: `);
+  console.log(`In the game you'll see text in different text colors, every color has a meaning, here you have all of them: `);
   console.log(`Red is for`.red);
   console.log(`Blue is for`.blue);
   console.log(`Green is for`.green);
@@ -57,17 +57,30 @@ const room0 = () => {
         "You hear a voice in your head... -Strange: Hey! Can you hear me? I told you, I'll help you as much as I can! In order to escape from wherever you are, use actions (type'em) that you think you could do if you were there. Type like you were searching on Google (for example, if you want to open the door, the correct command will be <open door>. Try to <look around>!"
       );
       room0();
-    } else if (answer.room00 === "open door") {
+    } else if (answer.room00 === "unlock door") {
       if (inventory.includes("key") == true) {
         console.log(
-          "While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
+          "-Strange: Well done! Now you can get out from this room"
             .red
         );
         inventory.splice("key");
-        room1();
-      } else {
-        console.log("The door is locked, you may need a key to open that door");
         room0();
+        } else {
+          console.log("You may need a key to unlock it...")
+          room0();
+        }
+      }else if (answer.room00 === "open door") {
+        if (inventory.includes("key") == true) {
+          console.log(
+            "You've got a key, use it!"
+              .red
+          );
+          room0();
+        } else {
+        console.log("While you approach the door, the whole building start to shake and everything went dark, when you start to see something..."
+        .red
+        );
+        room1();
       }
     } else if (answer.room00 === "inventory") {
       console.table(inventory);
