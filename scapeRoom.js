@@ -4,25 +4,62 @@ const qstns = require("./qstns");
 const { Character } = require("./class");
 const items = require("./objects");
 // const tutorial = require("./rooms/tutorial");
-
+// Find a way to not restart the game when died!!!!!!
+// And a LIFE COUNTER
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 let game;
 
 const inventory = [];
 let lights = false;
+let lock = true;
+
+
+
+const trys = () => {
+  let life = 3;
+  life --;
+
+  if (life.life == 2)
+  {
+    console.log("Alright, alright, now you know you've got more than 1 opportunity, but... Be careful, you're not a cat...");
+  }
+  else if (life.life == 1)
+  { 
+    console.log("Mate, you're crossing the line... NEXT TIME WILL BE YOUR LAST!");
+  }
+  else if (life.life == 0)
+  {
+    console.log("I told you twice, this is not gonna happen again, I'm sorry but YOU SHALL NOT PASS!");
+    console.log("Start smelling burnt, everything is over 9000 degrees, the guy melt you into a flesh doh...");
+    console.log(">GAME OVER<")
+    room0();
+  }
+
+}
+
+
 
 const init = () => {
   console.log(
-`Welcome to "AntiScape"! This is a Text adventure game, for a better experience, I strongly recommend to read everything carefully, you'll have the solution in the text, the challenge
- here will be to match the commands for the ones that are programmed, if you feel stuck, check your spelling, read the text again or find a synonym!`.red
+    `Welcome to "AntiScape"! This is a Text adventure game, for a better experience, I strongly recommend to read everything carefully, you'll have the solution in the text, the challenge
+ here will be to match the commands for the ones that are programmed, if you feel stuck, check your spelling, read the text again or find a synonym!`
+      .red
   );
-  console.log(`In the game you'll see text in different text colors, every color has a meaning, here you have all of them: `);
+  console.log(
+    `In the game you'll see text in different text colors, every color has a meaning, here you have all of them: `
+  );
   console.log(`When you're moving forward`.red);
   console.log(`When your friend talk to you(You'll understand soon)`.blue);
   console.log(`If you need to do an action`.green);
   console.log(`General text`.white.bold);
-  console.log(`This is for... Well, you'll see, if you know everything, you won't enjoy!! :P`.magenta);
-  console.log(`This game doesn't have a "checkpoint", so, if you can't make it at once, you'll need to start over again!
-  Now you know everything you need, please, enjoy!!`.black.bgWhite);
+  console.log(
+    `This is for... Well, you'll see, if you know everything, you won't enjoy!! :P`
+      .magenta
+  );
+  console.log(
+    `This game doesn't have a "checkpoint", so, if you can't make it at once, you'll need to start over again!
+  Now you know everything you need, please, enjoy!!`.black.bgWhite
+  );
   console.log("");
 
   //change after "=>" to run game properly
@@ -38,14 +75,18 @@ const intro = () => {
         `- Strange: Alright ${game.name},
 I'm gonna get you out of there. For what I've hear, there's no living person who could scape, but I trust on you.
 just be carefull with your thoughts, there's something alive in there. Sometimes I'll be able to help you, follow my guidance!`
-          .blue
+          .blue.bgWhite
       );
       console.log(
         "Lets start with basics. In order to scape, you'll need to think (type) your next movement. That's the 'easy' part, I've hear that you'll have sorts of trials on each room"
-          .blue
+          .blue.bgWhite
       );
       console.log(
-        `If you are struggling to accomplish the room, ask for "help"!`.blue
+        "During the whole time, you'll be able to look into your INVENTORY by typing ".blue.bgWhite + `"inventory"`.white.bold + " have a look sometimes, it'd be helpfull"
+          .blue.bgWhite
+      );
+      console.log(
+        `If you are struggling to accomplish the room, ask for "help"!`.blue.bgWhite
       );
     })
     .then(() => room0());
@@ -58,30 +99,35 @@ const room0 = () => {
     if (answer.room00 === "help") {
       console.log(
         "You hear a voice in your head... -Strange: Hey! Can you hear me? I told you, I'll help you as much as I can! In order to escape from wherever you are, use actions (type'em) that you think you could do if you were there. Type like you were searching on Google (for example, if you want to open the door, the correct command will be <open door>. Try to <look around>!"
-      .blue);
+          .blue
+      );
       room0();
     } else if (answer.room00 === "unlock door") {
       if (inventory.includes("key") == true) {
+        lock = false;
         console.log(
-          "-Strange: Well done! Now you can get out from this room"
-            .red
+          "-Strange: Well done! Now you can get out from this room".red
         );
         inventory.splice("key");
+
         room0();
-        } else {
-          console.log("You may need a key to unlock it...")
-          room0();
-        }
-      }else if (answer.room00 === "open door") {
-        if (inventory.includes("key") == true) {
-          console.log(
-            "-Strange: You've got a key, use it!"
-              .red
-          );
-          room0();
-        } else {
-        console.log("While you open the door, the whole building start to shake and everything went dark, when you start to see something..."
-        .red
+      } else {
+        console.log("You may need a key to unlock it...".green);
+        room0();
+      }
+    } else if (answer.room00 === "open door") {
+      if (lock == true) {
+        console.log("-Strange: You've got a key, use it!".red);
+        room0();
+      } else {
+        console.log(
+          "While you open the door, the whole building start to shake and everything went dark, suddenly, a big shine appears in front of you ..."
+            .red
+        );
+        console.log("");
+        console.log(
+          "Everything is dusty... You can see all those creepy paintings, an old rusty bed, a broken wood table with some damn well looking food and a new TV that's surprisely working"
+            .red
         );
         room1();
       }
@@ -89,27 +135,31 @@ const room0 = () => {
       console.table(inventory);
       room0();
     } else if (answer.room00 === "look window") {
-      console.log("You can't see anything, they're tainted");
+      console.log("You can't see anything, they're tainted".white.bold);
       room0();
-    } else if (answer.room00 === "pickup key") {
+    } else if (answer.room00 === "grab key") {
       inventory.push("key");
       console.log("You picked up the key".red);
       room0();
     } else if (answer.room00 === "look around") {
       console.log(
         "You look around and... well... There's not much to see, you're in a small square room with 3 tinted windows, a key in the floor and a closed door"
+          .white.bold
       );
       room0();
     } else if (answer.room00 === "look window") {
       console.log(
         "You can't see sh*t! You barely visualize the shape of your friend through it"
+          .white.bold
       );
       room0();
     } else if (answer.room00 === "jump") {
       console.log("You jumped! What's a game without jumping, right?");
       room0();
     } else {
-      console.log("Command invalid, think a bit harder!");
+      console.log(
+        "Command invalid. Check your spelling, look for a synonim or think different!"
+      );
       room0();
     }
   });
@@ -147,27 +197,34 @@ const room1 = () => {
             console.log("Access granted, you may continue, for now...".red);
             room2();
           } else {
-            console.log("Error, try again");
+            console.log("Error, try again".white.bold);
             room1();
           }
         });
     } else if (answer.room01 === "look around") {
       console.log(
         "Everything is dusty... You can see all those creepy paintings, an old rusty bed, a broken wood table with some damn well looking food and a new TV that's surprisely working"
+          .white.bold
       );
       room1();
     } else if (answer.room01 === "jump") {
-      console.log("You jumped! What's a game without jumping, right?");
+      console.log(
+        "You jumped! What's a game without jumping, right?".white.bold
+      );
       room1();
     } else if (answer.room01 === "eat food") {
+    trys.life--;
+      trys();
       console.log(
-        "HOW YOU DARE TO TAKE MYYYYYY FOOD? I KNEW YOU WERE NOT WORTH IT!".magenta
-          .bold
+        "HOW YOU DARE TO TAKE MYYYYYY FOOD? I KNEW YOU WERE NOT WORTH IT!"
+          .magenta.bold
       );
       console.log(
         "After you heard the voice, you start feeling unwell, nine seconds later, feeling a massive headache. You hear a sound coming from the TV unfortunetely in the TV you see youself bleeding out..."
+          .white.bold
       );
       console.log("You died...".black.bgRed);
+      room1();
     } else if (answer.room01 === "look bed") {
       console.log(
         `You can hear a voice: What are you thinking about , ${game.name}? You are not in position to rest!`
@@ -176,15 +233,19 @@ const room1 = () => {
     } else if (answer.room01 === "look table") {
       console.log(
         "You can hear a voice: Trust me, Human, you don't even want to eat that food..."
+          .white.bold
       );
       room1();
     } else if (answer.room01 === "watch tv") {
       console.log(
         "On TV you can see the news: - The whole planet is ruined!! 1001 demons have arrived, they burnt 1001 lands to ashes, and they said they'll stay for 1001 years... PLEASE HELP!"
+          .white.bold
       );
       room1();
     } else {
-      console.log("You can think better! Check your spelling");
+      console.log(
+        "Command invalid. Check your spelling, look for a synonim or think different!"
+      );
       room1();
     }
   });
@@ -206,7 +267,7 @@ const room2 = () => {
           "The door is on fire! You'll burn yourself if you try to open that door"
         );
         room2();
-      } 
+      }
     } else if (answer.room02 === "inventory") {
       console.table(inventory);
       room2();
@@ -271,53 +332,58 @@ const room2 = () => {
 };
 
 const room3 = () => {
-
-  
   console.log(
     "And now you can... Well, you're doing great, so there's no need to help you anymore... Don't worry, I'll repeat this any time you fail. Good luck :)"
   );
   inquirer.prompt(qstns.room03).then((answer) => {
     if (answer.room03 === "open door") {
       if (inventory.includes(items.antiToxicMask)) {
-        console.log("-Strange: WHAAAAAT? NOOOOOOOOOOOO! You were not suposed to pass!! I brainwashed you when you died for the same reason! Why would you think you're not able to remember anything?! This is not over yet (name), IS NOT OVEEEEEER!");
-        console.log("While your fake friend was yelling at you because of his failure, you started to feel better than never in your life... Or death?")
+        console.log(
+          "-Strange: WHAAAAAT? NOOOOOOOOOOOO! You were not suposed to pass!! I brainwashed you when you died for the same reason! Why would you think you're not able to remember anything?! This is not over yet (name), IS NOT OVEEEEEER!"
+        );
+        console.log(
+          "While your fake friend was yelling at you because of his failure, you started to feel better than never in your life... Or death?"
+        );
         gameOver();
       } else {
-        console.log(
-          "What do you think it'll happen to you doing that..."
-        );
-        console.log("After inhaling the toxic air, you faint...")
-      } 
+        console.log("What do you think it'll happen to you doing that...");
+        console.log("After inhaling the toxic air, you faint...");
+      }
     } else if (answer.room03 === "jump") {
       lights = true;
       // Think on moving the whole room to another file just to have everything tidy...
       console.log("You jumped! What's a game without jumping, right?");
-      console.log("After you jumped, the pressure plate was activated, and slowly, all lights started to switch on");
+      console.log(
+        "After you jumped, the pressure plate was activated, and slowly, all lights started to switch on"
+      );
       room3();
     } else if (answer.room03 === "inventory") {
       console.table(inventory);
       room3();
     } else if (answer.room03 === "help") {
-      if(lights == false){
-        console.log("-Strange: If you want to continue, you'll need some light... Wait, is that a pressure plate under your feet? Put some pressure!!")
+      if (lights == false) {
+        console.log(
+          "-Strange: If you want to continue, you'll need some light... Wait, is that a pressure plate under your feet? Put some pressure!!"
+        );
         room3();
       } else {
         console.log(
-        "-Strange: No no no, you don't need me... Well, okay, if you insist... I've seen that chamber, you'll need an AntiToxic mask, but at this rate, you may need to craft it"
-      );
-      room3();
-    }
-      
-    } else if (answer.room03 === "look around") {
-      if (lights == false){
-         console.log(
-        "Everything is dark, lights are off"
-      );
-      } else {
-        console.log("- Strange: Woah! This place is a mess! Looks like it's been years since someone clean up this room. ");
-        console.log(" You're in a wasted room, you can see dirty spots all over the floor, also, a bit more conserved, a desk with a computer and a green potion, a closet, a small library and the door inside of a chamber")
+          "-Strange: No no no, you don't need me... Well, okay, if you insist... I've seen that chamber, you'll need an AntiToxic mask, but at this rate, you may need to craft it"
+        );
+        room3();
       }
-     
+    } else if (answer.room03 === "look around") {
+      if (lights == false) {
+        console.log("Everything is dark, lights are off");
+      } else {
+        console.log(
+          "- Strange: Woah! This place is a mess! Looks like it's been years since someone clean up this room. "
+        );
+        console.log(
+          " You're in a wasted room, you can see dirty spots all over the floor, also, a bit more conserved, a desk with a computer and a green potion, a closet, a small library and the door inside of a chamber"
+        );
+      }
+
       room3();
       //edit here!
     } else if (answer.room03 === "look closet") {
@@ -329,7 +395,9 @@ const room3 = () => {
       console.log(
         "When you introduce your hand in the pocket, feels empty, but when you look at your hand, you realize that you're holding the softest piece of cotton you ever touch"
       );
-      console.log("-Strange: Ohh! I missed that feeling, the best Antitoxic cotton with a touch of heaven...");
+      console.log(
+        "-Strange: Ohh! I missed that feeling, the best Antitoxic cotton with a touch of heaven..."
+      );
       inventory.push(items.cotton);
       room3();
     } else if (answer.room03 === "take mask") {
@@ -344,24 +412,29 @@ const room3 = () => {
       );
       room3();
     } else if (answer.room03 === "look library") {
-      console.log(
-        "You can see a few books about poisoning and toxicity"
-      );
+      console.log("You can see a few books about poisoning and toxicity");
       room3();
     } else if (answer.room03 === "read poisoning book") {
       console.log(
         "[...] Whatever you do, NEVER trust on green, there are many reason, for example, [...] "
       );
-      console.log("-Strange: Ahh... Such a good memories reading that book... All you need is GREEN! Right?");
+      console.log(
+        "-Strange: Ahh... Such a good memories reading that book... All you need is GREEN! Right?"
+      );
       room3();
     } else if (answer.room03 === "read toxicity book") {
       console.log(
         "[...] After 27 tests, it's well known how cotton clean the toxicity of the green air thanks to [...] "
       );
-      console.log("-Strange: When did that book arrive there? It wasn't the last time I checked it...");
+      console.log(
+        "-Strange: When did that book arrive there? It wasn't the last time I checked it..."
+      );
       room3();
     } else if (answer.room03 === "craft antitoxic mask") {
-      if (inventory.includes(items.cotton) && inventory.includes(items.toxicMask)) {
+      if (
+        inventory.includes(items.cotton) &&
+        inventory.includes(items.toxicMask)
+      ) {
         inventory.splice(items.cotton && items.toxicMask);
         inventory.push(items.antiToxicMask);
         console.log(
@@ -370,24 +443,23 @@ const room3 = () => {
         console.log(
           "-Strange: That was... Unexpected... Go.. Good J.. Job... I guess..."
         );
-
       } else {
-        console.log(
-          "Have you got all the items in your inventory?"
-        );
+        console.log("Have you got all the items in your inventory?");
       }
       room3();
     } else if (answer.room03 === "look desk") {
       console.log(
         "The desk is pretty dirty and rusty, the computer seems to work, and the potion is inside of a cilindric phial, shinning with the best green you could imagine."
       );
-      console.log("-Strange: When did that book arrive there? It wasn't the last time I checked it...");
+      console.log(
+        "-Strange: When did that book arrive there? It wasn't the last time I checked it..."
+      );
       room3();
     } else if (answer.room03 === "drink potion") {
+      console.log("-Strange: Hahaha... Haha... HAHAHAHAHA!!");
       console.log(
-        "-Strange: Hahaha... Haha... HAHAHAHAHA!!"
+        "You foot start to weight way to much, you can't move at all... Every milisecond you feel how your blood start to get thicker, after 1.8 seconds, you became a statue..."
       );
-      console.log("You foot start to weight way to much, you can't move at all... Every milisecond you feel how your blood start to get thicker, after 1.8 seconds, you became a statue...");
       console.log("You may need some knowledge for the next time...");
     } else if (answer.room03 === "look computer") {
       inquirer
@@ -422,15 +494,25 @@ const room3 = () => {
 };
 
 const easterEgg = () => {
-  console.log("WTF are you doing?? Well played! Hope it was a bit challenging, just a bit! In here you'll get nothing to finish this room, but you did it! You found the easterEgg hided in this game.");
-  console.log("If you're curious about why the number 9, it's 'cause the coder encounter this number way many times in his childhood, thinking that the number was following him while it was (unconsciously)all the opposite(lmao).");
-  console.log("And now that you're here, all I've to say is THANKS! Thanks for playing this far, as a creator, all I want is you to finish and enjoy the game ^^");
-  console.log("Okay, okay, okay, I'm feeling softhearted. The key to finish this room is in");
+  console.log(
+    "WTF are you doing?? Well played! Hope it was a bit challenging, just a bit! In here you'll get nothing to finish this room, but you did it! You found the easterEgg hided in this game."
+  );
+  console.log(
+    "If you're curious about why the number 9, it's 'cause the coder encounter this number way many times in his childhood, thinking that the number was following him while it was (unconsciously)all the opposite(lmao)."
+  );
+  console.log(
+    "And now that you're here, all I've to say is THANKS! Thanks for playing this far, as a creator, all I want is you to finish and enjoy the game ^^"
+  );
+  console.log(
+    "Okay, okay, okay, I'm feeling softhearted. The key to finish this room is in"
+  );
   console.log("FATAL ERROR: 404 NOT FOUND. Powering off...".blue);
   room3();
-}
+};
 
 const gameOver = () => {
-  console.log("This is the end, if you're reading this, my apologies, this still in beta, next time you'll have a proper ending. Big Love from Spain: Antiheroe")
-}
+  console.log(
+    "This is the end, if you're reading this, my apologies, this still in beta, next time you'll have a proper ending. Big Love from Spain: Antiheroe"
+  );
+};
 init();

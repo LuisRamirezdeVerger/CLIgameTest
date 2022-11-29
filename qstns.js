@@ -49,6 +49,14 @@ const room03 = [
     },
 ];
 
+const brawl0 = [
+  {
+    type: "list",
+    name: "brawl0",
+    message:" Choose your next movement"
+  }
+]
+
 module.exports = {
   tutorial,
   prologe,
